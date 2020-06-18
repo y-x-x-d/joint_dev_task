@@ -2,9 +2,10 @@
 # 回答の出力を確認される際は，「ruby main.rb」をターミナルから実行して下さい。
 
 def q1
-  names = ["田中", "佐藤", "佐々木", "高橋", "斎藤"]
+  names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
+  names << "斎藤"
   puts names
 end
 
@@ -28,9 +29,9 @@ def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-  sports.delete(nil)
+  sports.compact!
   # 以下は変更しないで下さい
-  p sports
+  puts sports
 end
 
 def q5
@@ -42,7 +43,7 @@ def q5
     puts true
   end
 
-  if ! array2.empty?
+  if array2
     puts false
   end
 end
@@ -101,10 +102,11 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  newsports = sports.flatten
-  newsports.uniq!
-  newsports.each.with_index(1) do |newsports, n| 
-    puts "No#{n}" + newsports
+  sports.flatten!.uniq!
+  # newsports = sports.flatten
+  # newsports.uniq!
+  sports.each.with_index(1) do |sports, n| 
+    puts "No#{n}" + sports
   end
 end
 
@@ -120,7 +122,9 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  puts user_data.merge(update_data)
+  user_data.merge!(update_data)
+  puts user_data.values
+  
 end
 
 def q14
@@ -135,13 +139,14 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.key?(:age)
-    puts "OK"
-  end
-
-  if data2.has_key?(:age)
-    puts "NG"
-  end
+  puts data1.key?(:age) ? "OK" : "NG"
+  # if data1.key?(:age)
+  #   puts "OK"
+  # end
+  puts data2.has_key?(:age) ? "OK" : "NG"
+  # if data2.has_key?(:age)
+  #   puts "NG"
+  # end
 
 end
 
