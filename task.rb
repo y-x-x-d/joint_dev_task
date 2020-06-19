@@ -39,13 +39,8 @@ def q5
   array2 = [1, 5, 8, 10]
 
   # 以下に回答を記載
-  if array1
-    puts true
-  end
-
-  if array2
-    puts false
-  end
+  puts array1.empty?
+  puts array2.empty?
 end
 
 def q6
@@ -105,9 +100,7 @@ def q11
   sports.flatten!.uniq!
   # newsports = sports.flatten
   # newsports.uniq!
-  sports.each.with_index(1) do |sports, n| 
-    puts "No#{n}" + sports
-  end
+  sports.each.with_index(1) { |sports, n| puts "No#{n}" + sports }
 end
 
 def q12
@@ -122,9 +115,7 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  user_data.merge!(update_data)
-  puts user_data.values
-  
+  puts user_data.merge!(update_data).values
 end
 
 def q14
@@ -159,8 +150,8 @@ def q16
   ]
 
   # 以下に回答を記載
-  users.each do |name, age|
-    puts "私の名前は#{:name}です。年齢は#{:age}歳です。"
+  users.each_value do ||
+    puts "私の名前は#{}です。年齢は#{}歳です。"
   end
 end
 
