@@ -97,10 +97,10 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sports.flatten!.uniq!
+  # sports.flatten!.uniq!
   # newsports = sports.flatten
   # newsports.uniq!
-  sports.each.with_index(1) { |sports, n| puts "No#{n}" + sports }
+  sports.flatten!.uniq!.each.with_index(1) { |sports, n| puts "No#{n}" + sports }
 end
 
 def q12
@@ -150,14 +150,24 @@ def q16
   ]
 
   # 以下に回答を記載
-  users.each_value do ||
-    puts "私の名前は#{}です。年齢は#{}歳です。"
+  users.each do |user|
+    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。"
   end
 end
 
 class UserQ17
   # 以下に回答を記載
+  attr_accessor :name, :age, :gender
 
+  def initialize(name:, age:, gender:)
+    @name = name
+    @age = age
+    @gender = gender
+  end
+
+  def info
+    puts "名前:#{@name} 年齢:#{@age} 性別:#{@gender}"
+  end
 end
 
 def q17
@@ -172,7 +182,17 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  attr_accessor :name, :age
 
+  def initialize(name:,age:)
+    @name = name
+    @age = age
+  end
+
+  def introduce
+      "こんにちは、#{@name}と申します。宜しくお願い致します。
+      はいさいまいど〜、#{@name}です！！！"
+  end
 end
 
 def q18
@@ -186,9 +206,14 @@ end
 
 class Item
   # 以下を修正して下さい
+  attr_accessor :name
 
   def initialize(name)
     @name = name
+  end
+
+  def name
+    "ゼロ秒思考"
   end
 end
 
@@ -200,12 +225,38 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  attr_accessor :name, :age
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
 
 end
 
 class Zoo
   # 以下に回答を記載
+  attr_accessor :infant, :children, :adult, :senior
 
+  def initialize(infant, children, adult, senior)
+    @infant = infant
+    @children = children
+    @adult = adult
+    @senior = senior
+  end
+
+  def info_entry_fee
+    case 
+    when  0..5
+      puts "#{@name}さんの入場料金は#{@infant}円です。"
+    when 6..12
+      puts "#{@name}さんの入場料金は#{@children}円です。"
+    when 13..64
+      puts "#{@name}さんの入場料金は#{@adult}円です。"
+    when 65..120
+      puts "#{@name}さんの入場料金は#{@senior}円です。"
+    end
+  end
 end
 
 
