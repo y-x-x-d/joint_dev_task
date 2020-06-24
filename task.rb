@@ -157,16 +157,20 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  attr_accessor :name, :age, :gender
+  attr_reader :name, :age, :gender
 
-  def initialize(name:, age:, gender:)
-    @name = name
-    @age = age
-    @gender = gender
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
   end
 
   def info
-    puts "名前:#{@name} 年齢:#{@age} 性別:#{@gender}"
+     puts <<~EOS
+      名前：#{@name}
+      年齢：#{@age}
+      性別：#{@gender}
+    EOS
   end
 end
 
@@ -182,16 +186,19 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  attr_accessor :name, :age
+  attr_reader :name, :age
 
-  def initialize(name:,age:)
-    @name = name
-    @age = age
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
   end
 
   def introduce
-      "こんにちは、#{@name}と申します。宜しくお願い致します。
-      はいさいまいど〜、#{@name}です！！！"
+    if age < 20
+      "はいさいまいど〜、#{@name}です！！！"
+    else
+      "こんにちは、#{@name}と申します。宜しくお願い致します。"
+    end
   end
 end
 
@@ -206,14 +213,12 @@ end
 
 class Item
   # 以下を修正して下さい
-  attr_accessor :name
-
-  def initialize(name)
-    @name = name
+  def initialize(**params)
+    @name = params[:name]
   end
 
   def name
-    "ゼロ秒思考"
+    @name
   end
 end
 
@@ -225,28 +230,27 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age
+  attr_reader :name, :age
 
-  def initialize(name, age)
-    @name = name
-    @age = age
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
   end
 
 end
 
 class Zoo
   # 以下に回答を記載
-  attr_accessor :infant, :children, :adult, :senior
-
-  def initialize(infant, children, adult, senior)
-    @infant = infant
-    @children = children
-    @adult = adult
-    @senior = senior
+  def initialize(**params)
+    @infant = params[:infant]
+    @children = params[:children]
+    @adult = params[:adult]
+    @senior = params[:senior]
   end
 
   def info_entry_fee
-    case 
+    fee = @infant, @children, @adult, @senior
+    case fee
     when  0..5
       puts "#{@name}さんの入場料金は#{@infant}円です。"
     when 6..12
