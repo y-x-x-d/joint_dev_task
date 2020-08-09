@@ -211,7 +211,7 @@ class Item
   # 以下を修正して下さい
   attr_reader :name
 
-  def initialize(name)
+  def initialize(name: "ゼロ秒思考")
     @name = name
   end
 end
@@ -243,23 +243,16 @@ class Zoo
   end
 
   def info_entry_fee(age)
-    def initialize(**params)
-      @infant = params[:infant]
-      @children = params[:children]
-      @adult = params[:adult]
-      @senior = params[:senior]
-    end
-
-    
-    case age
+    age = 
+    case age 
     when 0..5
-      "#{@name}さんの入場料金は#{@infant}円です。"
+      puts "#{@name}さんの入場料金は#{@infant}円です。"
     when 6..12
-      "#{@name}さんの入場料金は#{@children}円です。"
+      puts "#{@name}さんの入場料金は#{@children}円です。"
     when 13..64
-      "#{@name}さんの入場料金は#{@adult}円です。"
+      puts "#{@name}さんの入場料金は#{@adult}円です。"
     when 65..120
-      "#{@name}さんの入場料金は#{@senior}円です。"
+      puts "#{@name}さんの入場料金は#{@senior}円です。"
     end
   end
 end
