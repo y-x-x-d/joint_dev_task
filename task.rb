@@ -243,17 +243,19 @@ class Zoo
   end
 
   def info_entry_fee(user)
-    case user.age 
-    when 0..5
-      @infant
-    when 6..12
-      @children
-    when 13..64
-      @adult
-    when 65..120
-      @senior
-    end
-    puts "#{user.name}さんの入場料金は#{}円です。"
+
+    fee = 
+      case user.age 
+      when 0..5
+        @infant
+      when 6..12
+        @children
+      when 13..64
+        @adult
+      when 65..120
+        @senior
+      end
+    puts "#{user.name}さんの入場料金は#{fee[:entry_fee]}円です。"
   end
 end
 
